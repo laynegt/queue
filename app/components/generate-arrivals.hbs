@@ -1,0 +1,36 @@
+<div
+  {{!-- {{did-insert (fn this.generateSome 10 2)}}
+  {{did-insert (fn this.generateSome 10 0.5)}}
+  {{did-insert (fn this.generateSome 10 1)}} --}}
+>
+  {{!-- <button type="button" {{on "click" (fn this.generate this.ROLE_TANK 2)}}>Generate Tanks</button>
+  <button type="button" {{on "click" (fn this.generate this.ROLE_DAMAGE 0.5)}}>Generate Damage</button>
+  <button type="button" {{on "click" (fn this.generate this.ROLE_SUPPORT 1)}}>Generate Support</button> --}}
+
+  <button type="button" {{on "click" (fn this.populate 3600)}}>Populate Queues</button>
+
+  {{!-- <header>Tanks</header>
+  <ul>
+    {{#each this.tankArrivals as |arrivalInSec|}}
+      <li>{{floor (div arrivalInSec 60)}}m {{round (mod arrivalInSec 60)}}s</li>
+    {{/each}}
+  </ul> --}}
+
+  <p>Tanks in Queue: {{this.tankArrivals.length}}</p>
+  <p>Damage in Queue: {{this.damageArrivals.length}}</p>
+  <p>Supports in Queue: {{this.supportArrivals.length}}</p>
+
+  <button type="button" {{on "click" this.extractMatch}}>Make Match</button>
+
+  {{#if this.madeMatch.length}}
+    <ul>
+      {{#each this.madeMatch as |arrivalInSec|}}
+        <li>{{floor (div arrivalInSec 60)}}m {{round (mod arrivalInSec 60)}}s</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  <button type="button" {{on "click" this.clearQueues}}>Clear</button>
+
+
+</div>
